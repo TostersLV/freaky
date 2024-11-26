@@ -1,0 +1,143 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
+    gap: 20px; /* Gap between grid items */
+    height: 100%;
+}
+
+.box {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    height: 20vh; /* Sets a uniform height for all .box elements */
+}
+
+#box1 {
+    height: 40vh; /* Box 1 is already set to be taller */
+}
+
+#box1 img:hover {
+    transform: scale(0.8);
+    transition: transform 0.3s ease-in-out;
+}
+
+#box4 {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffeb3b;
+    height: 100%; /* This ensures box4 fills its grid cell */
+    padding: 0;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff5733;
+    opacity: 0;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#box5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh; /* Adjusting box5 to match the height of other boxes */
+    position: relative;
+}
+
+#box5 .loader {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#box5 .line1,
+#box5 .line2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    transform-origin: -35px center;
+    animation: spin 1.5s linear infinite;
+}
+
+#box5 .line1 {
+    transform: rotate(0deg);
+}
+
+#box5 .line2 {
+    transform: rotate(180deg);
+    animation-delay: -0.75s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 5vh; 
+    }
+
+    .box {
+        height: auto; /* This allows boxes to adjust their height based on content, but might not be uniform */
+    }
+
+    #box1 {
+        aspect-ratio: auto;
+    }
+
+    /* Ensure #box4 remains taller on mobile */
+    #box4 {
+        min-height: 50vh; 
+    }
+
+    #box6 {
+        height: 50vh;
+    }
+    
+    /* Adjust box5 for mobile view */
+    #box5 {
+        height: auto; /* Adjust this if you want box5 to fill available space or match others */
+    }
+}
